@@ -2,14 +2,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float _speed;
+    public delegate void Notify();
+    public delegate void NotifyWithInstance(GameObject instance);
+    public event Notify PlayerDied;
+    public event Notify Shot;
+
+    [SerializeField] private Rect _bounds;
+    private GameObject _gameRunner;
+    private readonly float _speed = 75.0f;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
     void Awake()
     {
         this._moveVector = Vector2.zero;
         this._rigidBody = this.GetComponent<Rigidbody2D>();
-        this._speed = 25;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,10 +28,20 @@ public class Player : MonoBehaviour
     {
         this._moveVector.x = Input.GetAxis("Horizontal");
         this._moveVector.y = Input.GetAxis("Vertical");
+        if (Input.GetAxis("Fire1") >= 1.0f)
+            Debug.Log("Shot");
     }
 
     void FixedUpdate()
     {
-        this._rigidBody.linearVelocity = this._moveVector.normalized * this._speed;
+        this._rigidBody.linearVelocity = this._moveVector.normalized * this._speed * Time.deltaTime;
+    }
+
+    void LateUpdate()
+    {
+        //if (this._bounds.Contains(new Vector2(this.transform.position.x, this.transform.position.y)))
+        //{
+
+        //}
     }
 }
