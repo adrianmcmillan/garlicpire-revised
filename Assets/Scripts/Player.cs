@@ -8,9 +8,6 @@ public class Player : MonoBehaviour
     public event Notify Shot;
 
     [SerializeField] private Rect _bounds;
-    [SerializeField] private GameObject _cameraObject;
-    private Camera _camera;
-    private GameObject _gameRunner;
     private readonly float _speed = 75.0f;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
@@ -20,7 +17,6 @@ public class Player : MonoBehaviour
     {
         this._moveVector = Vector2.zero;
         this._rigidBody = this.GetComponent<Rigidbody2D>();
-        this._camera = this._cameraObject.GetComponent<Camera>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,7 +32,6 @@ public class Player : MonoBehaviour
         this._moveVector.y = Input.GetAxis("Vertical");
         if (Input.GetAxis("Fire1") >= 1.0f)
             this.Shot.Invoke();
-        this._camera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this._camera.transform.position.z);
     }
 
     void FixedUpdate()

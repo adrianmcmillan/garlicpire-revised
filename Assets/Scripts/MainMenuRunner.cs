@@ -11,8 +11,7 @@ public class MainMenuRunner : MonoBehaviour
     [SerializeField] private GameObject _playButton;
     void Awake()
     {
-        //if (this._playButton != null)
-        //    this._playButton.GetComponent<Button>().OnPointerClick
+        Globals.Initialize();
     }
     public void OnStartButtonClicked()
     {
