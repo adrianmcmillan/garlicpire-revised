@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         this._moveVector.x = Input.GetAxis("Horizontal");
         this._moveVector.y = Input.GetAxis("Vertical");
         if (Input.GetAxis("Fire1") >= 1.0f)
-            Debug.Log("Shot");
+            this.Shot.Invoke();
     }
 
     void FixedUpdate()

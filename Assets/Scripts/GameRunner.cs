@@ -25,6 +25,8 @@ public class GameRunner : MonoBehaviour
 
     // non serialized
     private ArrayList _projectiles;
+    private ArrayList _enemies;
+    private int score;
     struct Projectile
     {
         public Projectile(GameObject go, float createdOn) {
@@ -55,11 +57,11 @@ public class GameRunner : MonoBehaviour
 
     void OnPlayerDied()
     {
-
+        
     }
 
     void OnShot()
     {
-
+        Debug.Log("Shot");
     }
 }
