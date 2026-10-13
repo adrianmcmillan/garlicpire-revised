@@ -28,8 +28,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this._moveVector.x = Input.GetAxis("Horizontal");
-        this._moveVector.y = Input.GetAxis("Vertical");
+        this._moveVector.x = Input.GetAxisRaw("Horizontal");
+        this._moveVector.y = Input.GetAxisRaw("Vertical");
         if (Input.GetAxis("Fire1") >= 1.0f)
             this.Shot.Invoke();
     }
