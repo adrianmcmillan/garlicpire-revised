@@ -7,7 +7,7 @@ public class Globals
     private const string IS_TUTORIAL_ACTIVE_PLAYER_PREFS_KEY = "IsInTutorial";
     public static float MusicVolume = 1.0f;
     public static float SFXVolume = 1.0f;
-    public static bool IsTutorial = false;
+    public static bool IsTutorial = true;
 
 
     public static void Initialize()
