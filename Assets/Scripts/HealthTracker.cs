@@ -18,6 +18,6 @@ public class HealthTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        health.SetText("Health: "+garlic.maxHealth+" / "+garlic.currentHealth);
+        health.SetText("Health: "+garlic.currentHealth+" / "+garlic.maxHealth);
     }
 }
