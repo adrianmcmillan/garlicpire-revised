@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     private readonly float _speed = 75.0f;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
-    public float currentHealth;
-    public float maxHealth = 100f;
+    public int currentHealth;
+    public int maxHealth = 100;
     void Awake()
     {
         this._moveVector = Vector2.zero;
