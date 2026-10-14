@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class MainMenuRunner : MonoBehaviour
 {
-    public const int MainMenuIndex = 0;
-    public const int GameWorldIndex = 1;
-    public const int SettingsMenuIndex = 2;
     [SerializeField] private GameObject _playButton;
     void Awake()
     {
@@ -15,10 +12,10 @@ public class MainMenuRunner : MonoBehaviour
     }
     public void OnStartButtonClicked()
     {
-        SceneManager.LoadScene(MainMenuRunner.GameWorldIndex);
+        LevelManager.LoadLevel(Levels.GameWorld);
     }
     public void OnSettingsMenuClicked()
     {
-        SceneManager.LoadScene(MainMenuRunner.SettingsMenuIndex);
+        LevelManager.LoadLevel(Levels.SettingsMenu);
     }
 }
