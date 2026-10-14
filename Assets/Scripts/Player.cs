@@ -1,4 +1,6 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -8,11 +10,19 @@ public class Player : MonoBehaviour
     public event Notify Shot;
 
     [SerializeField] private Rect _bounds;
-    private readonly float _speed = 75.0f;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
     public int currentHealth;
-    public int maxHealth = 100;
+    public int _maxHealth = 100;
+    public float _moveSpeed = 200.0f;
+    public float _cooldown = 5.0f;
+    public float _time;
+    int i;
+    public UnityEngine.Vector3 mousePos;
+    public UnityEngine.Vector3 relativeMousePos;
+
+    public Projectile _stake;
+
     void Awake()
     {
         this._moveVector = Vector2.zero;
@@ -21,7 +31,11 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        this.currentHealth = maxHealth;
+
+        this.currentHealth = _maxHealth;
+        i = 0;
+        _time = 0f;
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), _stake.GetComponent<Collider2D>());
         
     }
 
@@ -30,13 +44,23 @@ public class Player : MonoBehaviour
     {
         this._moveVector.x = Input.GetAxisRaw("Horizontal");
         this._moveVector.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetAxis("Fire1") >= 1.0f)
-            this.Shot.Invoke();
-    }
 
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        relativeMousePos = mousePos - transform.position;
+
+        _time += Time.deltaTime;
+        if(_time >= _cooldown)
+        {
+            Instantiate(_stake, transform.position, Quaternion.identity).Init(relativeMousePos);
+            Debug.Log("Meow"+i);
+            i++;
+            _time = 0;
+        }
+    }
+    // called onec every fixed frame update
     void FixedUpdate()
     {
-        this._rigidBody.linearVelocity = this._moveVector.normalized * this._speed * Time.deltaTime;
+        this._rigidBody.linearVelocity = this._moveVector.normalized * this._moveSpeed * Time.deltaTime;
     }
 
     void LateUpdate()

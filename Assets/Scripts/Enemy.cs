@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Projectile")
+        if(collision.gameObject.tag == "Projectile")
         {
             Debug.Log("Enemy was hit by projectile!");
             this.currentHealth -= 1;
