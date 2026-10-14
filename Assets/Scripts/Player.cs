@@ -17,9 +17,10 @@ public class Player : MonoBehaviour
     public float _moveSpeed = 200.0f;
     public float _cooldown = 5.0f;
     public float _time;
-    int i;
-    public UnityEngine.Vector3 mousePos;
-    public UnityEngine.Vector3 relativeMousePos;
+    private UnityEngine.Vector3 mousePos;
+    private UnityEngine.Vector2 relativeMousePos;
+
+    public GameObject _rotation;
 
     public Projectile _stake;
 
@@ -33,7 +34,6 @@ public class Player : MonoBehaviour
     {
 
         this.currentHealth = _maxHealth;
-        i = 0;
         _time = 0f;
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), _stake.GetComponent<Collider2D>());
         
@@ -46,14 +46,15 @@ public class Player : MonoBehaviour
         this._moveVector.y = Input.GetAxisRaw("Vertical");
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+
         relativeMousePos = mousePos - transform.position;
+        _rotation.transform.up = relativeMousePos;
 
         _time += Time.deltaTime;
         if(_time >= _cooldown)
         {
-            Instantiate(_stake, transform.position, Quaternion.identity).Init(relativeMousePos);
-            Debug.Log("Meow"+i);
-            i++;
+            Instantiate(_stake, transform.position, Quaternion.identity).Init(_rotation.transform.up);
             _time = 0;
         }
     }

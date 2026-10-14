@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     public float _lifeSpan;
     public float _time;
 
-    public void Init(UnityEngine.Vector3 mousePos)
+    public void Init(UnityEngine.Vector2 mousePos)
     {
         _rb.linearVelocity = mousePos * _speed;
         _lifeSpan = 2;
