@@ -862,6 +862,7 @@ MonoBehaviour:
   _time: 0
   _rotation: {fileID: 1258727495}
   _stake: {fileID: -7944126729762442398, guid: 9dcde46fa3119f948a996b24e884f8ea, type: 3}
+  _damage: 1
 --- !u!114 &1102239958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,8 +1265,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 953184635259835124, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1102239952}
+    - target: {fileID: 953184635259835124, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4921010276457692981, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: garlic
@@ -1281,7 +1286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5593633376956554896, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: m_Constraints
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7084170802870894448, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: m_Name
