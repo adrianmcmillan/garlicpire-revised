@@ -13,7 +13,7 @@ public class GameRunner : MonoBehaviour
     }
 
     public delegate void Notify();
-    public event Notify FruitDied;
+    //public event Notify FruitDied;
 
     public const float ProjectileLifetime = 2.0f;
 
@@ -40,8 +40,8 @@ public class GameRunner : MonoBehaviour
     void Awake()
     {
         LastInstance = this.gameObject;
-        this._playerCharacter.GetComponent<Player>().PlayerDied += this.OnPlayerDied;
-        this._playerCharacter.GetComponent<Player>().Shot += this.OnShot;
+        //this._playerCharacter.GetComponent<Player>().PlayerDied += this.OnPlayerDied;
+        //this._playerCharacter.GetComponent<Player>().Shot += this.OnShot;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

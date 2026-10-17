@@ -2,18 +2,18 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageTracker
 {
     public delegate void Notify();
     public delegate void NotifyWithInstance(GameObject instance);
-    public event Notify PlayerDied;
-    public event Notify Shot;
+    //public event Notify PlayerDied;
+    //public event Notify Shot;
 
     [SerializeField] private Rect _bounds;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
-    public int currentHealth;
-    public int _maxHealth = 100;
+    public float currentHealth;
+    public float _maxHealth = 100;
     public float _moveSpeed = 200.0f;
     public float _cooldown = 5.0f;
     public float _time;
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public GameObject _rotation;
 
     public Projectile _stake;
+    public float _damage = 1;
 
     void Awake()
     {
@@ -35,7 +36,6 @@ public class Player : MonoBehaviour
 
         this.currentHealth = _maxHealth;
         _time = 0f;
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), _stake.GetComponent<Collider2D>());
         
     }
 
@@ -74,9 +74,11 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Enemy")
-        {
-            this.currentHealth -= 1;
-        }
+        
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
     }
 }
