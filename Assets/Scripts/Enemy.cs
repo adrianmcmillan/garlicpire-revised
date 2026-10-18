@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 10;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
-    public float _moveSpeed = 100.0f;
+    public float _moveSpeed;
     public GameObject target;
     public float _damage = 3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,11 +45,7 @@ public class Enemy : MonoBehaviour
 
     void movement()
     {
-        //this._moveVector = target.transform.position.normalized;
-        
-        //this._rigidBody.linearVelocity = this._moveVector.normalized * this._moveSpeed * Time.deltaTime;
-        this._rigidBody.linearVelocity = ((Vector2)target.transform.position - (Vector2)transform.position).normalized;
-        //Debug.Log(this._rigidBody.linearVelocity);
+        this._rigidBody.linearVelocity = ((Vector2)target.transform.position - (Vector2)transform.position).normalized * this._moveSpeed * Time.deltaTime;
     }
 
     void deathChecker()
