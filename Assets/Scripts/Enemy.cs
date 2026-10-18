@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
         this.currentHealth = maxHealth;
         this._moveVector = Vector2.zero;
         this._rigidBody = this.GetComponent<Rigidbody2D>();
+        target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2032881236931370607}
   - component: {fileID: 2800797581339809634}
   - component: {fileID: 218828723073542457}
-  - component: {fileID: 4921010276457692981}
+  - component: {fileID: 4838337060980160619}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &218828723073542457
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2800797581339809634}
   m_maskType: 0
---- !u!114 &4921010276457692981
+--- !u!114 &4838337060980160619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,11 +191,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2983858337428306730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9787cfd940f2f93478768e7e096f717e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d4dfd6a63da96442bf797d843fd8f25, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthTracker
-  garlic: {fileID: 0}
-  health: {fileID: 0}
+  m_EditorClassIdentifier: '::'
+  enemy: {fileID: 953184635259835124}
+  health: {fileID: 218828723073542457}
 --- !u!1 &7084170802870894448
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 2437223530841514896}
   - component: {fileID: 2593751165020694272}
   - component: {fileID: 953184635259835124}
+  - component: {fileID: 797875667010734228}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -258,7 +259,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &2437223530841514896
 SpriteRenderer:
   serializedVersion: 2
@@ -306,9 +307,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5278922295078056197, guid: b830ba7087d094d46bcfc752658ddf93, type: 3}
+  m_Sprite: {fileID: -1469725026, guid: 669b28d27febe3e4891cddf5a09c625b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -356,7 +357,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -380,3 +381,26 @@ MonoBehaviour:
   maxHealth: 10
   _moveSpeed: 100
   target: {fileID: 0}
+  _damage: 3
+--- !u!95 &797875667010734228
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084170802870894448}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71616f180cfb1dc40b3ecce7f61e0c99, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
