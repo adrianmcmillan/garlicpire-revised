@@ -54,7 +54,7 @@ public class Player : MonoBehaviour, IDamageTracker
         _time += Time.deltaTime;
         if(_time >= _cooldown)
         {
-            Instantiate(_stake, transform.position, Quaternion.identity).Init(_rotation.transform.up);
+            Instantiate(_stake, transform.position, Quaternion.identity).Init(_rotation.transform.up, this);
             _time = 0;
         }
     }
@@ -62,19 +62,6 @@ public class Player : MonoBehaviour, IDamageTracker
     void FixedUpdate()
     {
         this._rigidBody.linearVelocity = this._moveVector.normalized * this._moveSpeed * Time.deltaTime;
-    }
-
-    void LateUpdate()
-    {
-        //if (this._bounds.Contains(new Vector2(this.transform.position.x, this.transform.position.y)))
-        //{
-
-        //}
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        
     }
 
     public void TakeDamage(float damage)

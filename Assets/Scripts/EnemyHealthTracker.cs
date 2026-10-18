@@ -9,7 +9,7 @@ public class EnemyHealthTracker : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        health.SetText(enemy.currentHealth+" / "+enemy.maxHealth);
     }
 
     // Update is called once per frame

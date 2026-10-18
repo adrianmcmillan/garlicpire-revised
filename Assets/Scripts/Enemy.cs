@@ -1,11 +1,11 @@
 using System.Drawing;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageTracker
 {
 
-    public int currentHealth;
-    public int maxHealth = 10;
+    public float currentHealth;
+    public float maxHealth = 10;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
     public float _moveSpeed;
@@ -29,17 +29,15 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        IDamageTracker damagee = collision.gameObject.GetComponent<IDamageTracker>();
+        if(collision.gameObject.tag == "Player")
+        {
+            IDamageTracker damagee = collision.gameObject.GetComponent<IDamageTracker>();
 
-        if (damagee != null)
-        {
-            Debug.Log("Enemy is hurting: "+damagee+" for "+_damage+" health!");
-            damagee.TakeDamage(_damage);
-        }
-        if(collision.gameObject.tag == "Projectile")
-        {
-            Debug.Log("Enemy was hit by projectile!");
-            this.currentHealth -= 1;
+            if (damagee != null)
+            {
+                Debug.Log(this+" is hurting: "+damagee+" for "+_damage+" health!");
+                damagee.TakeDamage(_damage);
+            }
         }
     }
 
@@ -55,5 +53,10 @@ public class Enemy : MonoBehaviour
             Debug.Log("I AM DEAD");
             Destroy(gameObject);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
     }
 }

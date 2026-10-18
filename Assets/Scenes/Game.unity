@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 953184635259835124, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: _moveSpeed
-      value: 130
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7084170802870894448, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: m_Name
@@ -877,7 +877,7 @@ MonoBehaviour:
   _time: 0
   _rotation: {fileID: 1258727495}
   _stake: {fileID: -7944126729762442398, guid: 9dcde46fa3119f948a996b24e884f8ea, type: 3}
-  _damage: 1
+  _damage: 5
 --- !u!114 &1102239958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 953184635259835124, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: _moveSpeed
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7084170802870894448, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: m_Name
