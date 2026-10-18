@@ -29,12 +29,12 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        IDamageTracker damager = collision.gameObject.GetComponent<IDamageTracker>();
+        IDamageTracker damagee = collision.gameObject.GetComponent<IDamageTracker>();
 
-        if (damager != null)
+        if (damagee != null)
         {
-            Debug.Log("Player hurting: "+damager);
-            damager.TakeDamage(_damage);
+            Debug.Log("Enemy is hurting: "+damagee+" for "+_damage+" health!");
+            damagee.TakeDamage(_damage);
         }
         if(collision.gameObject.tag == "Projectile")
         {
