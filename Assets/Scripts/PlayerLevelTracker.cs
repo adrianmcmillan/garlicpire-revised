@@ -15,6 +15,11 @@ public class PlayerLevelTracker : MonoBehaviour
         this._gameRunner.GetComponent<GameRunner>().LevelUp += this.OnLevelUp;
     }
     
+    void Start()
+    {
+        this._text.text = "Level 1 (0%)\n0 XP";
+    }
+
     private float GetLevelupPercent(float level, float xp)
     {
         return (xp%10)/10 * 100;
@@ -22,10 +27,10 @@ public class PlayerLevelTracker : MonoBehaviour
 
     void OnLevelUp(int newLevel, int newExp)
     {
-        this._text.text = $"Level {newLevel} ({GetLevelupPercent(newLevel, newExp)}%)\n{newExp} XP";
+        this._text.text = $"Level {newLevel} ({GetLevelupPercent((float)newLevel, (float)newExp)}%)\n{newExp} XP";
     }
     void OnGainedXP(int newXP)
     {
-        this._text.text = $"Level {_gameRunnerComponent.Level} ({GetLevelupPercent(_gameRunnerComponent.Level, newXP)}%)\n{newXP} XP";
+        this._text.text = $"Level {_gameRunnerComponent.Level} ({GetLevelupPercent((float)_gameRunnerComponent.Level, (float)newXP)}%)\n{newXP} XP";
     }
 }

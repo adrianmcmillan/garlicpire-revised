@@ -82,8 +82,9 @@ public class GameRunner : MonoBehaviour
         enemy.Died += ((maxhealth) => {
             // award a lil XP based on enemy's amx health
             this.XP += maxhealth;  // TODO adrianmcmillan: revise XP gain function to something more robust than the enemy's max health
-            this.GainedXP.Invoke(this.XP);
-            //this.CheckLevelUp();
+            this.ToNextLevel -= maxhealth;
+            //this.GainedXP.Invoke(this.XP);
+            this.CheckLevelUp();
         });
     }
 
@@ -92,6 +93,13 @@ public class GameRunner : MonoBehaviour
     /// </summary>
     private void CheckLevelUp()
     {
-        // TODO adrianmcmillan: revise level-up policy, currently each level 
+        // TODO adrianmcmillan: revise level-up policy, currently each level is awarded after 10 xp is gained
+        if (this.ToNextLevel <= 0)
+        {
+            this.LevelUp.Invoke(++this.Level, this.XP);
+        } else
+        {
+            this.GainedXP.Invoke(this.XP);
+        }
     }
 }
