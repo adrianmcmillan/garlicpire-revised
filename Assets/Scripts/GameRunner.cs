@@ -13,9 +13,17 @@ public class GameRunner : MonoBehaviour
     }
 
     public delegate void Notify();
+    public delegate void NotifyInt(int i);
+    public delegate void NotifyInt2(int u, int v);
+    public event NotifyInt GainedXP;
+    public event NotifyInt2 LevelUp;
     //public event Notify FruitDied;
 
     public const float ProjectileLifetime = 2.0f;
+
+    public int XP { get; private set; } = 0;
+    public int Level { get; private set; } = 1;
+    public int ToNextLevel { get; private set; } = 10;
 
 
     [SerializeField] private Rect _bounds;
@@ -63,5 +71,27 @@ public class GameRunner : MonoBehaviour
     void OnShot()
     {
         Debug.Log("Shot");
+    }
+
+    /// <summary>
+    /// Tells the game runner to subscribe to an enemy's death event, so it knows when an enemy has died.
+    /// </summary>
+    /// <param name="enemy">The newly created enemy.</param>
+    public void RegisterEnemy(Enemy enemy)
+    {
+        enemy.Died += ((maxhealth) => {
+            // award a lil XP based on enemy's amx health
+            this.XP += maxhealth;  // TODO adrianmcmillan: revise XP gain function to something more robust than the enemy's max health
+            this.GainedXP.Invoke(this.XP);
+            //this.CheckLevelUp();
+        });
+    }
+
+    /// <summary>
+    /// Checks if the player should level up based on their XP.
+    /// </summary>
+    private void CheckLevelUp()
+    {
+        // TODO adrianmcmillan: revise level-up policy, currently each level 
     }
 }

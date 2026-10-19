@@ -1,4 +1,5 @@
 using System.Drawing;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageTracker
@@ -11,6 +12,10 @@ public class Enemy : MonoBehaviour, IDamageTracker
     public float _moveSpeed;
     public GameObject target;
     public float _damage = 3;
+    private GameObject _gameRunner;
+
+    public event GameRunner.NotifyInt Died;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +23,8 @@ public class Enemy : MonoBehaviour, IDamageTracker
         this._moveVector = Vector2.zero;
         this._rigidBody = this.GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player");
+
+        GameRunner.LastInstance.GetComponent<GameRunner>().RegisterEnemy(this);
     }
 
     // Update is called once per frame
@@ -46,11 +53,12 @@ public class Enemy : MonoBehaviour, IDamageTracker
         this._rigidBody.linearVelocity = ((Vector2)target.transform.position - (Vector2)transform.position).normalized * this._moveSpeed * Time.deltaTime;
     }
 
-    void deathChecker()
+    async Task deathChecker()
     {
         if(this.currentHealth <= 0)
         {
             Debug.Log("I AM DEAD");
+            this.Died?.Invoke((int)this.maxHealth);
             Destroy(gameObject);
         }
     }
