@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameRunner : MonoBehaviour
 {
     public static GameObject LastInstance = null;
+    public static float ScoreScale = 0.67f;
     public enum Zone
     {
         Forest = 0,
@@ -18,6 +19,7 @@ public class GameRunner : MonoBehaviour
     public event NotifyInt GainedXP;
     public event NotifyInt2 LevelUp;
     //public event Notify FruitDied;
+    public event NotifyInt ScoreChanged;
 
     public const float ProjectileLifetime = 2.0f;
 
@@ -34,7 +36,7 @@ public class GameRunner : MonoBehaviour
     // non serialized
     private ArrayList _projectiles;
     private ArrayList _enemies;
-    private int score;
+    private int _score;
     struct Projectile
     {
         public Projectile(GameObject go, float createdOn) {
@@ -81,10 +83,12 @@ public class GameRunner : MonoBehaviour
     {
         enemy.Died += ((maxhealth) => {
             // award a lil XP based on enemy's amx health
-            this.XP += maxhealth;  // TODO adrianmcmillan: revise XP gain function to something more robust than the enemy's max health
-            this.ToNextLevel -= maxhealth;
+            //this.XP += maxhealth;  // TODO adrianmcmillan: revise XP gain function to something more robust than the enemy's max health
+            //this.ToNextLevel -= maxhealth;
             //this.GainedXP.Invoke(this.XP);
-            this.CheckLevelUp();
+            //this.CheckLevelUp();
+            this._score += ((int)(maxhealth * ScoreScale));
+            this.ScoreChanged.Invoke(this._score);
         });
     }
 
