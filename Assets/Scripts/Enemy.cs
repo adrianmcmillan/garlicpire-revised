@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour, IDamageTracker
 
     void movement()
     {
-        this._rigidBody.linearVelocity = ((Vector2)target.transform.position - (Vector2)transform.position).normalized * this._moveSpeed * Time.deltaTime;
+        this._rigidBody.linearVelocity = ((Vector2)target.transform.position - (Vector2)transform.position).normalized * this._moveSpeed;
     }
 
     async Task deathChecker()

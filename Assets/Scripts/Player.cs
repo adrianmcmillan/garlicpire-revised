@@ -50,6 +50,9 @@ public class Player : MonoBehaviour, IDamageTracker
     {
         this._moveVector.x = Input.GetAxisRaw("Horizontal");
         this._moveVector.y = Input.GetAxisRaw("Vertical");
+
+        Movement();
+
         if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             animator.SetBool("isMoving", true);
@@ -72,9 +75,9 @@ public class Player : MonoBehaviour, IDamageTracker
         }
     }
     // called onec every fixed frame update
-    void FixedUpdate()
+    public void Movement()
     {
-        this._rigidBody.linearVelocity = this._moveVector.normalized * this._moveSpeed * Time.deltaTime;
+        this._rigidBody.linearVelocity = this._moveVector.normalized * this._moveSpeed;
     }
 
     public void TakeDamage(float damage)
