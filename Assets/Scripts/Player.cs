@@ -12,11 +12,12 @@ public class Player : MonoBehaviour, IDamageTracker
     public HealthTracker healthbar;
 
     [SerializeField] private Rect _bounds;
+    [SerializeField] private Animator animator;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
     public float currentHealth;
     public float _maxHealth = 100;
-    public float _moveSpeed = 200.0f;
+    public float _moveSpeed;
     public float _cooldown = 5.0f;
     public float _time;
     private UnityEngine.Vector3 mousePos;
@@ -49,6 +50,13 @@ public class Player : MonoBehaviour, IDamageTracker
     {
         this._moveVector.x = Input.GetAxisRaw("Horizontal");
         this._moveVector.y = Input.GetAxisRaw("Vertical");
+        if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            animator.SetBool("isMoving", true);
+        } else
+        {
+            animator.SetBool("isMoving", false);
+        }
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
@@ -59,7 +67,7 @@ public class Player : MonoBehaviour, IDamageTracker
         _time += Time.deltaTime;
         if(_time >= _cooldown)
         {
-            Instantiate(_stake, transform.position, Quaternion.identity).Init(_rotation.transform.up, this);
+            Instantiate(_stake, transform.position, Quaternion.identity).Init(_rotation.transform.up, this, _rotation);
             _time = 0;
         }
     }

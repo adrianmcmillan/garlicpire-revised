@@ -104,7 +104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthTracker
   enemy: {fileID: 953184635259835124}
-  health: {fileID: 0}
   slider: {fileID: 4085750241186357633}
 --- !u!1 &603885960406272656
 GameObject:

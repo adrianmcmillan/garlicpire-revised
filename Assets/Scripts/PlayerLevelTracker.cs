@@ -1,15 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerLevelTracker : MonoBehaviour
 {
     [SerializeField] private GameObject _gameRunner;
     private GameRunner _gameRunnerComponent => _gameRunner.GetComponent<GameRunner>();
-    private UnityEngine.UI.Text _text;
+    private TextMeshProUGUI _text;
     private float _pct = 0.0f;
 
     void Awake()
     {
-        this._text = this.GetComponent<UnityEngine.UI.Text>();
+        this._text = this.GetComponent<TextMeshProUGUI>();
         Debug.Log(this._text.text);
         this._gameRunner.GetComponent<GameRunner>().GainedXP += this.OnGainedXP;
         this._gameRunner.GetComponent<GameRunner>().LevelUp += this.OnLevelUp;

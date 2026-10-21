@@ -10,11 +10,12 @@ public class Projectile : MonoBehaviour
     public float _time;
     private float damage;
 
-    public void Init(UnityEngine.Vector2 mousePos, Player BigShot)
+    public void Init(UnityEngine.Vector2 mousePos, Player BigShot, GameObject rotation)
     {
         _rb.linearVelocity = mousePos * _speed;
         _lifeSpan = 2;
         damage = BigShot._damage;
+        transform.rotation = rotation.transform.rotation;
     }
 
     public void Update()
