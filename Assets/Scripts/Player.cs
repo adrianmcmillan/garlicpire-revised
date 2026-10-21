@@ -9,6 +9,8 @@ public class Player : MonoBehaviour, IDamageTracker
     //public event Notify PlayerDied;
     //public event Notify Shot;
 
+    public HealthTracker healthbar;
+
     [SerializeField] private Rect _bounds;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour, IDamageTracker
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        healthbar.SetHealth(currentHealth);
         if (!_dead && this.currentHealth <= 0)
         {
             _dead = true;
