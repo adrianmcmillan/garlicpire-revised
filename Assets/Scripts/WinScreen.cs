@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinScreen : MonoBehaviour
 {
@@ -28,12 +29,13 @@ public class WinScreen : MonoBehaviour
         this._winScreen.SetActive(true);
         if (won)
         {
-            this._titleText.GetComponent<UnityEngine.UI.Text>().text = "You Won!";
+            this._titleText.GetComponent<TMPro.TextMeshProUGUI>().text = "You Won!";
         }
         else
         {
 
         }
-        this._scoreText.GetComponent<UnityEngine.UI.Text>().text = $"Score: {score}";
+        this._scoreText.GetComponent<TMPro.TextMeshProUGUI>().text = $"Score: {score}";
     }
+    public void OnClickMainMenuButton() { SceneManager.LoadScene(0); }
 }

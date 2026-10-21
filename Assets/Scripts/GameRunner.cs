@@ -143,6 +143,7 @@ public class GameRunner : MonoBehaviour
             this._checkedIfWon = true;
             //this.GameOver.Invoke(true, this._score);
             this._winScreen.SetActive(true);
+            this._winScreen.GetComponent<WinScreen>().OnGameover(true, this._score);
         }
     }
 }
