@@ -18,11 +18,12 @@ public class GameRunner : MonoBehaviour
     public delegate void Notify();
     public delegate void NotifyInt(int i);
     public delegate void NotifyInt2(int u, int v);
+    public delegate void NotifyGameOver(bool won, int score);
     public event NotifyInt GainedXP;
     public event NotifyInt2 LevelUp;
     //public event Notify FruitDied;
     public event NotifyInt ScoreChanged;
-    public event NotifyInt2 GameOver;
+    public event NotifyGameOver GameOver;
 
     public const float ProjectileLifetime = 2.0f;
 
@@ -35,11 +36,13 @@ public class GameRunner : MonoBehaviour
     [SerializeField] private Zone _currentZone;
     [SerializeField] private GameObject _background;
     [SerializeField] private GameObject _playerCharacter;
+    [SerializeField] private GameObject _winScreen;
 
     // non serialized
     private ArrayList _projectiles;
     private ArrayList _enemies;
     private int _score;
+    private bool _checkedIfWon = false;
     struct Projectile
     {
         public Projectile(GameObject go, float createdOn) {
@@ -72,6 +75,11 @@ public class GameRunner : MonoBehaviour
         
     }
 
+    void FixedUpdate()
+    {
+        
+    }
+
     void OnPlayerDied()
     {
         Debug.Log("Dead");
@@ -97,6 +105,7 @@ public class GameRunner : MonoBehaviour
             this._score += ((int)(maxhealth * ScoreScale));
             this.ScoreChanged.Invoke(this._score);
             this.CheckEnemyCapacity();
+            this.CheckWinCondition();
         });
     }
 
@@ -126,6 +135,14 @@ public class GameRunner : MonoBehaviour
     /// </summary>
     private void CheckWinCondition()
     {
-
+        if (this._checkedIfWon) return;
+        Debug.Log("Checking if we won");
+        if (this._score >= 1000)
+        {
+            Debug.Log("we won");
+            this._checkedIfWon = true;
+            //this.GameOver.Invoke(true, this._score);
+            this._winScreen.SetActive(true);
+        }
     }
 }
