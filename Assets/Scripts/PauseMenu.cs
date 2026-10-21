@@ -2,11 +2,11 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject container;
+    public GameObject settings;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Pause Clicked");
             container.SetActive(true);
             Time.timeScale = 0;
         }
@@ -26,8 +26,14 @@ public class PauseMenu : MonoBehaviour
 
     public void SettingsButton()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Settings");
-        Time.timeScale = 1;
+        container.SetActive(false);
+        settings.SetActive(true);
+    }
+
+    public void leaveMenu()
+    {
+        settings.SetActive(false);
+        container.SetActive(true);
     }
 
 
