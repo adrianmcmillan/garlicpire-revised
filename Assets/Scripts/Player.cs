@@ -41,6 +41,7 @@ public class Player : MonoBehaviour, IDamageTracker
     {
 
         this.currentHealth = _maxHealth;
+        healthbar.SetMaxHealth(_maxHealth);
         _time = 0f;
         
     }
