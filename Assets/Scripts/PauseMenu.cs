@@ -32,6 +32,7 @@ public class PauseMenu : MonoBehaviour
 
     public void leaveMenu()
     {
+        Globals.Save();
         settings.SetActive(false);
         container.SetActive(true);
     }
