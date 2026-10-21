@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 953184635259835124}
   - component: {fileID: 797875667010734228}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: HeavyEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,10 +539,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   currentHealth: 0
-  maxHealth: 10
-  _moveSpeed: 2
+  maxHealth: 30
+  _moveSpeed: 1
   target: {fileID: 0}
-  _damage: 3
+  _damage: 10
   healthbar: {fileID: 2854809661146843275}
 --- !u!95 &797875667010734228
 Animator:
