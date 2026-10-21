@@ -14,21 +14,20 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeButton()
     {
-        Debug.Log("Resume Clicked");
         container.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void MainMenuButton()
     {
-        Debug.Log("Main Menu Clicked");
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
     }
 
     public void SettingsButton()
     {
-        Debug.Log("Settings Clicked");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Settings");
+        Time.timeScale = 1;
     }
 
 
