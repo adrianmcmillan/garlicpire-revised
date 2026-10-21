@@ -179,6 +179,18 @@ PrefabInstance:
       propertyPath: _moveSpeed
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 2939629835953375687, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939629835953375687, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597163062571650160, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7084170802870894448, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -190,10 +202,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2983858337428306730, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
 --- !u!1 &259003290
 GameObject:
@@ -460,8 +469,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -244.9, y: -186.3}
-  m_SizeDelta: {x: 284.9, y: 58.93}
+  m_AnchoredPosition: {x: -266.01, y: -187.88}
+  m_SizeDelta: {x: 242.67, y: 55.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506952612
 MonoBehaviour:
@@ -1686,6 +1695,18 @@ PrefabInstance:
       propertyPath: _moveSpeed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2939629835953375687, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939629835953375687, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597163062571650160, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7084170802870894448, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
@@ -1697,10 +1718,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2983858337428306730, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
 --- !u!1 &1158051100
 GameObject:
@@ -1815,7 +1833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57.55, y: 54.210003}
+  m_AnchoredPosition: {x: 78.89, y: 33.5}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255548089
@@ -1838,7 +1856,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Health 100/100
+  m_text: 'Health: 100 / 100'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf0f39167bae58f4993901c11a6df898, type: 2}
   m_sharedMaterial: {fileID: -6678723626751498150, guid: bf0f39167bae58f4993901c11a6df898, type: 2}
@@ -1865,8 +1883,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46
-  m_fontSizeBase: 46
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12032,6 +12050,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1469725026, guid: 669b28d27febe3e4891cddf5a09c625b, type: 3}
+    - target: {fileID: 2939629835953375687, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939629835953375687, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597163062571650160, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7084170802870894448, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -12043,10 +12073,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2983858337428306730, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour, IDamageTracker
     public GameObject target;
     public float _damage = 3;
     private GameObject _gameRunner;
+    public EnemyHealthTracker healthbar;
 
     public event GameRunner.NotifyInt Died;
 
@@ -66,5 +67,6 @@ public class Enemy : MonoBehaviour, IDamageTracker
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        healthbar.SetHealth(currentHealth);
     }
 }

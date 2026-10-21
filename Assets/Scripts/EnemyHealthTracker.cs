@@ -1,20 +1,21 @@
 using TMPro;
 using UnityEngine;
+using UnityEditor.UI;
+using UnityEngine.UI;
 
 public class EnemyHealthTracker : MonoBehaviour
 {
     [SerializeField] private Enemy enemy;
-    public TextMeshPro health;
+    public Slider slider;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void SetHealth(float health)
     {
-        health.SetText(enemy.currentHealth+" / "+enemy.maxHealth);
+        slider.value = health;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void SetMaxHealth(float health)
     {
-        health.SetText(enemy.currentHealth+" / "+enemy.maxHealth);
+        slider.maxValue = health;
+        slider.value = health;
     }
 }
