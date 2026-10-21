@@ -18,4 +18,12 @@ public class MainMenuRunner : MonoBehaviour
     {
         LevelManager.LoadLevel(Levels.SettingsMenu);
     }
+    public void OnCreditsMenuClicked()
+    {
+        LevelManager.LoadLevel(Levels.CreditsMenu);
+    }
+    public void OnExit()
+    {
+        Application.Quit();
+    }
 }

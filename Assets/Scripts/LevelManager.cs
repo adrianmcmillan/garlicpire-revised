@@ -6,7 +6,8 @@ public enum Levels
 {
     MainMenu,
     GameWorld,
-    SettingsMenu
+    SettingsMenu,
+    CreditsMenu
 }
 public class LevelManager
 {
