@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   currentHealth: 0
   maxHealth: 20
-  _moveSpeed: 2
+  _moveSpeed: 75
   target: {fileID: 0}
   _damage: 5
   healthbar: {fileID: 2854809661146843275}
