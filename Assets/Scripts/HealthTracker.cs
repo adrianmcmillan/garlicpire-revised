@@ -20,7 +20,11 @@ public class HealthTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.SetText("Health: "+garlic.currentHealth+" / "+garlic._maxHealth);
+        if(healthText != null)
+        {
+            healthText.SetText("Health: "+garlic.currentHealth+" / "+garlic._maxHealth);
+        }
+        
     }
 
     public void SetHealth(float health)
