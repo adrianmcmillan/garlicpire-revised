@@ -1,4 +1,4 @@
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,6 +41,7 @@ public class Player : MonoBehaviour, IDamageTracker
     {
 
         this.currentHealth = _maxHealth;
+        healthbar.SetMaxHealth(_maxHealth);
         _time = 0f;
         
     }

@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour, IDamageTracker
     void Start()
     {
         this.currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
         this._moveVector = Vector2.zero;
         this._rigidBody = this.GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player");
