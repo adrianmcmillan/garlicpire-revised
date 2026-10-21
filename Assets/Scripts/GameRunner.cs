@@ -1,11 +1,13 @@
 using System.Collections;
 using Unity.VectorGraphics;
+using UnityEditor;
 using UnityEngine;
 
 public class GameRunner : MonoBehaviour
 {
     public static GameObject LastInstance = null;
-    public static float ScoreScale = 0.67f;
+    public static readonly float ScoreScale = 1.25f;
+    public static readonly int MaxEnemies = 3;
     public enum Zone
     {
         Forest = 0,
@@ -20,6 +22,7 @@ public class GameRunner : MonoBehaviour
     public event NotifyInt2 LevelUp;
     //public event Notify FruitDied;
     public event NotifyInt ScoreChanged;
+    public event NotifyInt2 GameOver;
 
     public const float ProjectileLifetime = 2.0f;
 
@@ -56,7 +59,11 @@ public class GameRunner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        this._enemies = new ArrayList();
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Enemy"))
+            this._enemies.Add(go);
+        Debug.Log(this._enemies.Count);
+        this._playerCharacter.GetComponent<Player>().Died += this.OnPlayerDied;
     }
 
     // Update is called once per frame
@@ -67,7 +74,7 @@ public class GameRunner : MonoBehaviour
 
     void OnPlayerDied()
     {
-        
+        Debug.Log("Dead");
     }
 
     void OnShot()
@@ -89,6 +96,7 @@ public class GameRunner : MonoBehaviour
             //this.CheckLevelUp();
             this._score += ((int)(maxhealth * ScoreScale));
             this.ScoreChanged.Invoke(this._score);
+            this.CheckEnemyCapacity();
         });
     }
 
@@ -105,5 +113,19 @@ public class GameRunner : MonoBehaviour
         {
             this.GainedXP.Invoke(this.XP);
         }
+    }
+    /// <summary>
+    /// Spawns more enemies if we do not have enough in the scene.
+    /// </summary>
+    private void CheckEnemyCapacity()
+    {
+
+    }
+    /// <summary>
+    /// Checks if the player has won the game, sending a message if they have.
+    /// </summary>
+    private void CheckWinCondition()
+    {
+
     }
 }

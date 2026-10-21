@@ -25,6 +25,9 @@ public class Player : MonoBehaviour, IDamageTracker
     public Projectile _stake;
     public float _damage = 1;
 
+    public event GameRunner.Notify Died;
+    private bool _dead = false;
+
     void Awake()
     {
         this._moveVector = Vector2.zero;
@@ -67,5 +70,12 @@ public class Player : MonoBehaviour, IDamageTracker
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        if (!_dead && this.currentHealth <= 0)
+        {
+            _dead = true;
+            this.Died.Invoke();
+        }
+        if (this.currentHealth < 0)
+            this.currentHealth = 0;
     }
 }

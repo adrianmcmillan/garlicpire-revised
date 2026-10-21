@@ -8,6 +8,7 @@ public class Globals
     public static float MusicVolume = 1.0f;
     public static float SFXVolume = 1.0f;
     public static bool IsTutorial = true;
+    public static bool GameOver = false;
 
 
     public static void Initialize()
