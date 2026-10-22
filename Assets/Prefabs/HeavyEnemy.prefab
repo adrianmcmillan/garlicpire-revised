@@ -62,11 +62,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 953184635259835124, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
       propertyPath: _moveSpeed
-      value: 25
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593633376956554896, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
+      propertyPath: m_Mass
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7084170802870894448, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
       propertyPath: m_Name
-      value: HeavyEnemy 1
+      value: HeavyEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
