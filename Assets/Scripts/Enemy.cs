@@ -15,9 +15,6 @@ public class Enemy : MonoBehaviour, IDamageTracker
     public float _damage = 3;
     private GameObject _gameRunner;
     public EnemyHealthTracker healthbar;
-
-    //public event GameRunner.Notify Died;
-
     public Action<GameObject> Died;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

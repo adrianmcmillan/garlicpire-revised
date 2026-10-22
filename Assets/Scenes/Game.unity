@@ -1342,8 +1342,8 @@ MonoBehaviour:
   _background: {fileID: 0}
   _playerCharacter: {fileID: 1102239952}
   _enemyPrefabs:
-  - {fileID: 7084170802870894448, guid: 321911d02a989b54ba4dd2a0064b5685, type: 3}
-  - {fileID: 7084170802870894448, guid: 8aab4f9e73249ea4db382f45f72e49e8, type: 3}
+  - {fileID: 473278697996568381, guid: 859ba7a4ff5ed6b498be69b7c701eb2e, type: 3}
+  - {fileID: 4641489354942475911, guid: 640a0fd21932f5b46bdf8b0788b20529, type: 3}
   - {fileID: 7084170802870894448, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
   _winScreen: {fileID: 953043310}
 --- !u!1 &619394800
