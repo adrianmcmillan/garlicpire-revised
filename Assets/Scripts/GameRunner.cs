@@ -89,6 +89,7 @@ public class GameRunner : MonoBehaviour
     void OnPlayerDied()
     {
         Debug.Log("Dead");
+        this._winScreen.GetComponent<WinScreen>().OnGameover(false, this._score);
     }
 
     void OnShot()

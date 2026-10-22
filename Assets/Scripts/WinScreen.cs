@@ -24,6 +24,9 @@ public class WinScreen : MonoBehaviour
     }
 
     public void OnGameover(bool won, int score) {
+        Time.timeScale = 0.0f;
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Enemy"))
+            GameObject.Destroy(go);
         Debug.Log("Game over");
         this._gameRunner = _gameRunnerObject.GetComponent<GameRunner>();
         this._winScreen.SetActive(true);
@@ -38,4 +41,5 @@ public class WinScreen : MonoBehaviour
         this._scoreText.GetComponent<TMPro.TextMeshProUGUI>().text = $"Score: {score}";
     }
     public void OnClickMainMenuButton() { SceneManager.LoadScene(0); }
+    public void OnClickRetryButton() { SceneManager.LoadScene(1); }
 }
