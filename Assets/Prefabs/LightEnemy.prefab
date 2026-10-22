@@ -406,7 +406,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -540,10 +540,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   currentHealth: 0
   maxHealth: 10
-  _moveSpeed: 150
+  _moveSpeed: 4
   target: {fileID: 0}
   _damage: 3
   healthbar: {fileID: 2854809661146843275}
+  _cooldown: 2
+  _time: 0
 --- !u!95 &797875667010734228
 Animator:
   serializedVersion: 7
