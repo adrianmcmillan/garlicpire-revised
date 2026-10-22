@@ -1,4 +1,5 @@
 //using UnityEditor.Experimental.GraphView;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour, IDamageTracker
 
     [SerializeField] private Rect _bounds;
     [SerializeField] private Animator animator;
+    public AudioClip[] FootstepSounds;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
     public float currentHealth;
@@ -31,6 +33,10 @@ public class Player : MonoBehaviour, IDamageTracker
     public event GameRunner.Notify Died;
     private bool _dead = false;
 
+    private bool _isMoving = false;
+
+    private float _timeSinceLastStep;
+
     void Awake()
     {
         this._moveVector = Vector2.zero;
@@ -43,7 +49,7 @@ public class Player : MonoBehaviour, IDamageTracker
         this.currentHealth = _maxHealth;
         healthbar.SetMaxHealth(_maxHealth);
         _time = 0f;
-        
+        StartCoroutine(FootstepSoundAutomator());
     }
 
     // Update is called once per frame
@@ -53,14 +59,8 @@ public class Player : MonoBehaviour, IDamageTracker
         this._moveVector.y = Input.GetAxisRaw("Vertical");
 
         Movement();
-
-        if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
-        {
-            animator.SetBool("isMoving", true);
-        } else
-        {
-            animator.SetBool("isMoving", false);
-        }
+        _isMoving = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
+        animator.SetBool("isMoving", _isMoving);
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
@@ -74,6 +74,7 @@ public class Player : MonoBehaviour, IDamageTracker
             Instantiate(_stake, transform.position, Quaternion.identity).Init(_rotation.transform.up, this, _rotation);
             _time = 0;
         }
+        _timeSinceLastStep += Time.deltaTime;
     }
     // called onec every fixed frame update
     public void Movement()
@@ -92,5 +93,29 @@ public class Player : MonoBehaviour, IDamageTracker
         }
         if (this.currentHealth < 0)
             this.currentHealth = 0;
+    }
+
+    private IEnumerator FootstepSoundAutomator()
+    {
+        AudioSource source = GetComponent<AudioSource>();
+        while (!_dead)
+        {
+            if (_isMoving)
+            {
+                if (_timeSinceLastStep <= 0.3)
+                {
+                    yield return null;
+                }
+                else
+                {
+                    AudioClip sound = FootstepSounds[UnityEngine.Random.Range(0, FootstepSounds.Length - 1)];
+                    source.PlayOneShot(sound);
+                    _timeSinceLastStep = 0;
+                    //source.clip = sound;
+                    //source.Play();
+                }
+            }
+            yield return null;
+        }
     }
 }
