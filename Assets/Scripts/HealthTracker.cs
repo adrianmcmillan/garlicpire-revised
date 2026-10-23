@@ -13,7 +13,7 @@ public class HealthTracker : MonoBehaviour
     public void SetHealth(float health)
     {
         slider.value = health;
-        healthText.SetText("Health: " + garlic.currentHealth + " / " + garlic._maxHealth);
+        healthText.SetText("Health: " + (garlic.currentHealth >= 0.0f ? garlic.currentHealth : 0.0f) + " / " + garlic._maxHealth);
     }
     
     public void SetMaxHealth(float health)
