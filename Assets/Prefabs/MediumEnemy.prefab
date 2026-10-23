@@ -542,10 +542,8 @@ MonoBehaviour:
   maxHealth: 20
   _moveSpeed: 2
   target: {fileID: 0}
-  _damage: 5
+  _damage: 3
   healthbar: {fileID: 2854809661146843275}
-  _cooldown: 2
-  _time: 0
 --- !u!95 &797875667010734228
 Animator:
   serializedVersion: 7

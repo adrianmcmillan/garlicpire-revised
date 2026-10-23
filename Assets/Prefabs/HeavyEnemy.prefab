@@ -57,6 +57,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 953184635259835124, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
+      propertyPath: _damage
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 953184635259835124, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
       propertyPath: maxHealth
       value: 30
       objectReference: {fileID: 0}

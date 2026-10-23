@@ -41,5 +41,9 @@ public class WinScreen : MonoBehaviour
         this._scoreText.GetComponent<TMPro.TextMeshProUGUI>().text = $"Score: {score}";
     }
     public void OnClickMainMenuButton() { SceneManager.LoadScene(0); }
-    public void OnClickRetryButton() { SceneManager.LoadScene(1); }
+    public void OnClickRetryButton() 
+    { 
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+    }
 }
