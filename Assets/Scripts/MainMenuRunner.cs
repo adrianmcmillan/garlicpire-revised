@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class MainMenuRunner : MonoBehaviour
 {
-    [SerializeField] private GameObject _playButton;
+    public AudioClip MenuMusic;
     void Awake()
     {
-        if (!Globals.initialized)
-        {
-            Globals.Initialize();
-        }
+        AudioManager.Instance.PlayMusic(MenuMusic);
     }
     public void OnStartButtonClicked()
     {

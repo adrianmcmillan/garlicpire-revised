@@ -45,6 +45,7 @@ public class GameRunner : MonoBehaviour
 
     private ArrayList _spawnedEnemies;
     [SerializeField] private GameObject _winScreen;
+    public AudioClip Music;
 
     // non serialized
     private ArrayList _projectiles;
@@ -67,6 +68,7 @@ public class GameRunner : MonoBehaviour
         //this._playerCharacter.GetComponent<Player>().PlayerDied += this.OnPlayerDied;
         //this._playerCharacter.GetComponent<Player>().Shot += this.OnShot;
         _spawnedEnemies = new ArrayList();
+        AudioManager.Instance.PlayMusic(Music);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

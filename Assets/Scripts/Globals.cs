@@ -26,8 +26,6 @@ public class Globals
             IsTutorial = PlayerPrefs.GetInt(IS_TUTORIAL_ACTIVE_PLAYER_PREFS_KEY) == 1;
         }
         initialized = true;
-        AudioManager.Instance.SetSFXVolume(SFXVolume);
-        AudioManager.Instance.SetMusicVolume(MusicVolume);
     }
 
     public static void Save()
@@ -35,7 +33,5 @@ public class Globals
         PlayerPrefs.SetFloat(MUSIC_VOLUME_PLAYER_PREFS_KEY, MusicVolume);
         PlayerPrefs.SetFloat(SFX_VOLUME_PLAYER_PREFS_KEY, SFXVolume);
         PlayerPrefs.SetInt(IS_TUTORIAL_ACTIVE_PLAYER_PREFS_KEY, IsTutorial ? 1 : 0);
-        AudioManager.Instance.SetSFXVolume(SFXVolume);
-        AudioManager.Instance.SetMusicVolume(MusicVolume);
     }
 }
