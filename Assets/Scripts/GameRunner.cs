@@ -134,7 +134,7 @@ public class GameRunner : MonoBehaviour
             if (_tilemap.HasTile(cell))
             {
                 GameObject enemy = Instantiate(
-                    _enemyPrefabs[UnityEngine.Random.Range(0, _enemyPrefabs.Length - 1)],
+                    _enemyPrefabs[UnityEngine.Random.Range(0, _enemyPrefabs.Length)],
                     spawnPosition,
                     Quaternion.identity
                 );
