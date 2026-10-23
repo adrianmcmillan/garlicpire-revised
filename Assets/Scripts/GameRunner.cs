@@ -75,17 +75,6 @@ public class GameRunner : MonoBehaviour
         SpawnInCircle();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void FixedUpdate()
-    {
-        
-    }
-
     void OnPlayerDied()
     {
         Debug.Log("Dead");
@@ -144,13 +133,6 @@ public class GameRunner : MonoBehaviour
             }
         }
     }
-    /// <summary>
-    /// Spawns more enemies if we do not have enough in the scene.
-    /// </summary>
-    private void CheckEnemyCapacity()
-    {
-
-    }
 
     private void HandleEnemyDeath(GameObject deadEnemy)
     {
@@ -158,7 +140,6 @@ public class GameRunner : MonoBehaviour
         Enemy component = deadEnemy.GetComponent<Enemy>();
         this._score += ((int)(component.maxHealth * ScoreScale));
         this.ScoreChanged.Invoke(this._score);
-        this.CheckEnemyCapacity();
         this.CheckWinCondition();
         Destroy(deadEnemy);
         SpawnInCircle();

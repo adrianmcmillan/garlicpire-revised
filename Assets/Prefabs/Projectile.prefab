@@ -138,8 +138,8 @@ MonoBehaviour:
   _speed: 4
   _lifeSpan: 0
   _time: 0
-  ThrowAudio: {fileID: 8300000, guid: 10e01009b1198db4bbf467a36441fb6d, type: 3}
-  ImpactAudio: {fileID: 8300000, guid: 7159ff78fe43071479bdd0140c6b2a1c, type: 3}
+  ThrowAudio: {fileID: 8300000, guid: 79e348f6c8f94c14eaf70072fadc2843, type: 3}
+  ImpactAudio: {fileID: 8300000, guid: f6bdb761a9327544d83602f40ca044bf, type: 3}
 --- !u!70 &-8427672686209056591
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -186,7 +186,7 @@ AudioSource:
   m_GameObject: {fileID: 4975993409194962211}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3770984970760016416, guid: f32a5252c9fbd214d87b7b305b143df8, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1

@@ -6,10 +6,11 @@ public class WinScreen : MonoBehaviour
 {
     [SerializeField] private GameObject _winScreen;
     [SerializeField] private GameObject _gameRunnerObject;
-    [SerializeField] private GameObject _scoreText;
+    [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private GameObject _newHighScoreText;
     [SerializeField] private GameObject _returnButton;
-    [SerializeField] private GameObject _titleText; 
+    [SerializeField] private TextMeshProUGUI _titleText;
+    [SerializeField] private TextMeshProUGUI _retryText;
     private GameRunner _gameRunner;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,15 +33,16 @@ public class WinScreen : MonoBehaviour
         this._winScreen.SetActive(true);
         if (won)
         {
-            this._titleText.GetComponent<TMPro.TextMeshProUGUI>().text = "You Won!";
+            this._titleText.text = "You Won!";
+            _retryText.text = "Play Again";
         }
-        else
-        {
-
-        }
-        this._scoreText.GetComponent<TMPro.TextMeshProUGUI>().text = $"Score: {score}";
+        this._scoreText.text = $"Score: {score}";
     }
-    public void OnClickMainMenuButton() { SceneManager.LoadScene(0); }
+    public void OnClickMainMenuButton() 
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0); 
+    }
     public void OnClickRetryButton() 
     { 
         SceneManager.LoadScene(1);

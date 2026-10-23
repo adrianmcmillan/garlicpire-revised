@@ -1,6 +1,7 @@
 //using UnityEditor.Experimental.GraphView;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamageTracker
@@ -14,7 +15,7 @@ public class Player : MonoBehaviour, IDamageTracker
 
     [SerializeField] private Rect _bounds;
     [SerializeField] private Animator animator;
-    public AudioClip[] FootstepSounds;
+    public AudioResource HurtSound;
     private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
     public float currentHealth;
@@ -76,7 +77,7 @@ public class Player : MonoBehaviour, IDamageTracker
         }
         _timeSinceLastStep += Time.deltaTime;
     }
-    // called onec every fixed frame update
+    // called once every fixed frame update
     public void Movement()
     {
         this._rigidBody.linearVelocity = this._moveVector.normalized * this._moveSpeed;
@@ -86,6 +87,7 @@ public class Player : MonoBehaviour, IDamageTracker
     {
         currentHealth -= damage;
         healthbar.SetHealth(currentHealth);
+        AudioManager.Instance.PlayResource(HurtSound);
         if (!_dead && this.currentHealth <= 0)
         {
             _dead = true;
@@ -108,8 +110,11 @@ public class Player : MonoBehaviour, IDamageTracker
                 }
                 else
                 {
-                    AudioClip sound = FootstepSounds[UnityEngine.Random.Range(0, FootstepSounds.Length - 1)];
-                    source.PlayOneShot(sound);
+                    if (source.volume != Globals.SFXVolume)
+                    {
+                        source.volume = Globals.SFXVolume;
+                    }
+                    source.Play();
                     _timeSinceLastStep = 0;
                     //source.clip = sound;
                     //source.Play();
@@ -117,5 +122,6 @@ public class Player : MonoBehaviour, IDamageTracker
             }
             yield return null;
         }
+        yield break;
     }
 }

@@ -21,8 +21,8 @@ public class Projectile : MonoBehaviour
         damage = BigShot._damage;
         transform.rotation = rotation.transform.rotation;
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = ThrowAudio;
-        _audioSource.Play();
+        _audioSource.volume = Globals.SFXVolume;
+        _audioSource.PlayOneShot(ThrowAudio);
     }
 
     public void Update()
@@ -44,12 +44,25 @@ public class Projectile : MonoBehaviour
             Debug.Log(this+" is hurting: "+damagee+" for "+damage+" health!");
             damagee.TakeDamage(damage);
         }
-        if(collision.gameObject.name != "Player")
+        switch (collision.gameObject.name)
         {
-            StartCoroutine(PlayImpactSoundThenDestroy());
-            CapsuleCollider2D cc = GetComponent<CapsuleCollider2D>();
-            cc.enabled = false;
+            case "Player":
+                {
+                    return;
+                }
+            case "Enemy":
+                {
+                    StartCoroutine(PlayImpactSoundThenDestroy());
+                    break;
+                }
+            default:
+                {
+                    StartCoroutine(FinishSoundThenDestroy());
+                    break;
+                }
         }
+        CapsuleCollider2D cc = GetComponent<CapsuleCollider2D>();
+        cc.enabled = false;
     }
 
     private IEnumerator PlayImpactSoundThenDestroy()
@@ -63,6 +76,21 @@ public class Projectile : MonoBehaviour
         _audioSource.Play();
 
         while (_audioSource.isPlaying) {
+            yield return null;
+        }
+
+        Destroy(gameObject);
+        yield break;
+    }
+
+    private IEnumerator FinishSoundThenDestroy()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        sr.enabled = false;
+
+        while (_audioSource.isPlaying)
+        {
             yield return null;
         }
 

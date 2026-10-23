@@ -8,7 +8,10 @@ public class MainMenuRunner : MonoBehaviour
     [SerializeField] private GameObject _playButton;
     void Awake()
     {
-        Globals.Initialize();
+        if (!Globals.initialized)
+        {
+            Globals.Initialize();
+        }
     }
     public void OnStartButtonClicked()
     {

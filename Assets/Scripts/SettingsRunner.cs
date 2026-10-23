@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SettingsRunner : MonoBehaviour
@@ -11,6 +13,10 @@ public class SettingsRunner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (!Globals.initialized)
+        {
+            Globals.Initialize();
+        }
         MusicVolumeSlider.value = Globals.MusicVolume;
         SFXVolumeSlider.value = Globals.SFXVolume;
         IsTutorialToggle.isOn = Globals.IsTutorial;
@@ -19,11 +25,13 @@ public class SettingsRunner : MonoBehaviour
     public void MusicSliderChanged()
     {
         Globals.MusicVolume = MusicVolumeSlider.value;
+        AudioManager.Instance.SetMusicVolume(MusicVolumeSlider.value);
     }
 
     public void SFXSliderChanged()
     {
         Globals.SFXVolume = SFXVolumeSlider.value;
+        AudioManager.Instance.SetSFXVolume(SFXVolumeSlider.value);
     }
 
     public void IsTutorialOptionChanged()

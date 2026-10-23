@@ -8,12 +8,10 @@ public class Enemy : MonoBehaviour, IDamageTracker
 
     public float currentHealth;
     public float maxHealth = 10;
-    private Vector2 _moveVector;
     private Rigidbody2D _rigidBody;
     public float _moveSpeed;
     public GameObject target;
     public float _damage = 3;
-    private GameObject _gameRunner;
     public EnemyHealthTracker healthbar;
     public Action<GameObject> Died;
 
@@ -21,8 +19,7 @@ public class Enemy : MonoBehaviour, IDamageTracker
     void Start()
     {
         this.currentHealth = maxHealth;
-        healthbar.SetMaxHealth(maxHealth);
-        this._moveVector = Vector2.zero;
+        healthbar.SetMaxHealth(UnityEngine.Random.Range(maxHealth * 0.75f, maxHealth));
         this._rigidBody = this.GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player");
     }
