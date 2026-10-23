@@ -2308,6 +2308,7 @@ MonoBehaviour:
   _rotation: {fileID: 1258727495}
   _stake: {fileID: -7944126729762442398, guid: 9dcde46fa3119f948a996b24e884f8ea, type: 3}
   _damage: 5
+  _pauseMenu: {fileID: 2099030902}
 --- !u!114 &1102239958
 MonoBehaviour:
   m_ObjectHideFlags: 0

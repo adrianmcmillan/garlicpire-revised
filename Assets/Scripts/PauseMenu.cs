@@ -7,8 +7,15 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            container.SetActive(true);
-            Time.timeScale = 0;
+            if (container.activeInHierarchy)
+            {
+                this.CloseAllMenusIfOpen();
+                Time.timeScale = 1;
+            } else
+            {
+                container.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
     }
 
@@ -35,6 +42,12 @@ public class PauseMenu : MonoBehaviour
         Globals.Save();
         settings.SetActive(false);
         container.SetActive(true);
+    }
+
+    private void CloseAllMenusIfOpen()
+    {
+        container.SetActive(false);
+        settings.SetActive(false);
     }
 
 

@@ -37,6 +37,7 @@ public class Player : MonoBehaviour, IDamageTracker
     private bool _isMoving = false;
 
     private float _timeSinceLastStep;
+    [SerializeField] private GameObject _pauseMenu;
 
     void Awake()
     {
@@ -67,7 +68,7 @@ public class Player : MonoBehaviour, IDamageTracker
         mousePos.z = 0;
 
         relativeMousePos = mousePos - transform.position;
-        if (GameRunner.LastInstance != null && !GameRunner.LastInstance.GetComponent<GameRunner>().GameEnded)
+        if (GameRunner.LastInstance != null && !GameRunner.LastInstance.GetComponent<GameRunner>().GameEnded && !this._pauseMenu.activeInHierarchy)
             _rotation.transform.up = relativeMousePos;
 
         _time += Time.deltaTime;
