@@ -21558,7 +21558,7 @@ PrefabInstance:
       objectReference: {fileID: 953043315}
     - target: {fileID: 5436933549321646704, guid: 64b42363b0a5db9428440852da08a59e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnClickMainMenuButton
+      value: OnClickRetryButton
       objectReference: {fileID: 0}
     - target: {fileID: 5436933549321646704, guid: 64b42363b0a5db9428440852da08a59e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName

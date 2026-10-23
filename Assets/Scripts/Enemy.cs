@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour, IDamageTracker
 {
 
     public float currentHealth;
-    public float maxHealth = 10;
+    public float maxHealth;
     private Rigidbody2D _rigidBody;
     public float _moveSpeed;
     public GameObject target;
@@ -18,8 +18,8 @@ public class Enemy : MonoBehaviour, IDamageTracker
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        this.currentHealth = maxHealth;
-        healthbar.SetMaxHealth(UnityEngine.Random.Range(maxHealth * 0.75f, maxHealth));
+        this.currentHealth = UnityEngine.Random.Range(maxHealth * 0.75f, maxHealth);
+        healthbar.SetMaxHealth(maxHealth);
         this._rigidBody = this.GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player");
     }

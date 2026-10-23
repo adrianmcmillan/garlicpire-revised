@@ -64,6 +64,22 @@ PrefabInstance:
       propertyPath: _moveSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2939629835953375687, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939629835953375687, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085750241186357633, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
+      propertyPath: m_Value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085750241186357633, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
+      propertyPath: m_MaxValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5593633376956554896, guid: a23636e0559a60c4a83043bbd6f918a6, type: 3}
       propertyPath: m_Mass
       value: 1
