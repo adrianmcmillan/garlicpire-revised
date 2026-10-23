@@ -67,7 +67,8 @@ public class Player : MonoBehaviour, IDamageTracker
         mousePos.z = 0;
 
         relativeMousePos = mousePos - transform.position;
-        _rotation.transform.up = relativeMousePos;
+        if (GameRunner.LastInstance != null && !GameRunner.LastInstance.GetComponent<GameRunner>().GameEnded)
+            _rotation.transform.up = relativeMousePos;
 
         _time += Time.deltaTime;
         if(_time >= _cooldown)
