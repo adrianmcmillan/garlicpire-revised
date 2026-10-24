@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
             Debug.Log(this+" is hurting: "+damagee+" for "+damage+" health!");
             damagee.TakeDamage(damage);
         }
-        switch (collision.gameObject.name)
+        switch (collision.gameObject.tag)
         {
             case "Player":
                 {

@@ -30,6 +30,7 @@ public class GameRunner : MonoBehaviour
 
     public const float ProjectileLifetime = 2.0f;
 
+    public bool GameEnded { get; private set; } = false;
     public int XP { get; private set; } = 0;
     public int Level { get; private set; } = 1;
     public int ToNextLevel { get; private set; } = 10;
@@ -80,6 +81,7 @@ public class GameRunner : MonoBehaviour
     void OnPlayerDied()
     {
         Debug.Log("Dead");
+        this.GameEnded = true;
         this._winScreen.GetComponent<WinScreen>().OnGameover(false, this._score);
     }
 
@@ -155,6 +157,7 @@ public class GameRunner : MonoBehaviour
         Debug.Log("Checking if we won");
         if (this._score >= 1000)
         {
+            this.GameEnded = true;
             Debug.Log("we won");
             this._checkedIfWon = true;
             //this.GameOver.Invoke(true, this._score);
